@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>@yield('title', 'Shopping Cart')</title>
+    <title>@yield('title', 'Laravel Shopping Cart Example')</title>
     <meta name="description" content="Laravel Shopping Cart Example">
 
     <!-- Mobile Specific Meta -->
@@ -14,9 +14,10 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+     
 
     <!-- Favicon and Apple Icons -->
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 
     <style>
 
@@ -55,17 +56,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="{{ url('/') }}">Shopping Cart</a>
+              <a class="navbar-brand" href="{{ url('/') }}">Laravel Shopping Cart Example</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class=""><a href="{{ url('/') }}">Home</a></li>
+                <li class="{{ set_active('shop') }}"><a href="{{ url('/') }}">Home/Shop</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#">FAQ</a></li>
 
               </ul>
-               <!-- -->
+              <ul class="nav navbar-nav navbar-right">
+                <li class="{{ set_active('wishlist') }}"><a href="{{ url('/wishlist') }}">Wishlist ({{ Cart::instance('wishlist')->count(false) }})</a></li>
+                <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a></li>
+              </ul>
             </div><!--/.nav-collapse -->
           </div>
         </nav>
@@ -76,13 +79,15 @@
 
     <footer>
       <div class="container">
-        <p class="text-muted">By <a href="https://www.facebook.com/mr.addle">Mituram Ray</a></p>
+        <p class="text-muted">By <a href="http://andremadarang.com">Andre Madarang</a></p>
       </div>
     </footer>
 
 <!-- JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+ 
 
 </body>
 </html>
